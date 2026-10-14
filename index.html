@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manika's Little World — A little place to breathe, feel loved, and find some peace. Made with love by your little brother." />
+  <meta name="theme-color" content="#F8DCE8" />
+  <title>Manika's Little World 🤍</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- WELCOME SCREEN                              -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section id="welcome-screen" class="welcome-screen" aria-label="Welcome">
+    <div class="welcome-particles" aria-hidden="true"></div>
+    <div class="welcome-content">
+      <p class="welcome-tagline fade-in-up" style="animation-delay: 0.3s;">Welcome to your little world 🤍</p>
+      <h1 class="welcome-title fade-in-up" style="animation-delay: 0.7s;">Hi, Chuti Nonah.</h1>
+      <p class="welcome-subtitle fade-in-up" style="animation-delay: 1.1s;">A tiny place made with love, just for you.</p>
+      <p class="welcome-message fade-in-up" style="animation-delay: 1.5s;">Here, you can pause for a moment.<br>You don't have to do everything today.</p>
+      <button id="enter-btn" class="welcome-btn fade-in-up" style="animation-delay: 2s;" aria-label="Enter the website">
+        Enter My Little World ✨
+      </button>
+    </div>
+    <div class="welcome-glow" aria-hidden="true"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- MAIN APP (hidden until welcome dismissed)   -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div id="main-app" class="main-app hidden" aria-hidden="true">
+
+    <!-- Ambient particles overlay -->
+    <div id="ambient-particles" class="ambient-particles" aria-hidden="true"></div>
+
+    <!-- ─── NAVIGATION ─── -->
+    <nav id="main-nav" class="glass-nav" aria-label="Main navigation">
+      <div class="nav-inner">
+        <span class="nav-logo" aria-hidden="true">🌸</span>
+        <div class="nav-links" role="tablist">
+          <button class="nav-link active" data-section="home" role="tab" aria-selected="true" aria-controls="section-home">Home</button>
+          <button class="nav-link" data-section="breathe" role="tab" aria-selected="false" aria-controls="section-breathe">Breathe</button>
+          <button class="nav-link" data-section="letters" role="tab" aria-selected="false" aria-controls="section-letters">Little Letters</button>
+          <button class="nav-link" data-section="journal" role="tab" aria-selected="false" aria-controls="section-journal">Journal</button>
+          <button class="nav-link" data-section="peaceful" role="tab" aria-selected="false" aria-controls="section-peaceful">Peaceful Corner</button>
+        </div>
+        <button id="settings-toggle" class="nav-settings-btn" aria-label="Open settings" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.32 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ─── SETTINGS PANEL ─── -->
+    <aside id="settings-panel" class="settings-panel glass-card hidden" aria-label="Settings" role="dialog" aria-modal="false">
+      <h3 class="settings-title">Settings</h3>
+      <div class="settings-group">
+        <label class="settings-label" for="setting-sound">
+          <span>Ambient Sound</span>
+          <div class="toggle-switch">
+            <input type="checkbox" id="setting-sound" />
+            <span class="toggle-slider"></span>
+          </div>
+        </label>
+        <label class="settings-label" for="setting-volume">
+          <span>Volume</span>
+          <input type="range" id="setting-volume" min="0" max="100" value="50" class="settings-range" />
+        </label>
+        <label class="settings-label" for="setting-ambience">
+          <span>Visual Ambience</span>
+          <input type="range" id="setting-ambience" min="0" max="100" value="70" class="settings-range" />
+        </label>
+        <label class="settings-label" for="setting-motion">
+          <span>Reduced Motion</span>
+          <div class="toggle-switch">
+            <input type="checkbox" id="setting-motion" />
+            <span class="toggle-slider"></span>
+          </div>
+        </label>
+      </div>
+      <button id="settings-reset-journal" class="settings-danger-btn">Clear All Journal Entries</button>
+      <button id="settings-revisit-welcome" class="settings-secondary-btn">Revisit Welcome Screen</button>
+      <button id="settings-close" class="settings-close-btn" aria-label="Close settings">✕</button>
+    </aside>
+
+    <!-- ─── MOBILE BOTTOM NAV ─── -->
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation">
+      <button class="mobile-nav-btn active" data-section="home" aria-label="Home">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="mobile-nav-btn" data-section="breathe" aria-label="Breathe">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>Breathe</span>
+      </button>
+      <button class="mobile-nav-btn" data-section="letters" aria-label="Little Letters">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Letters</span>
+      </button>
+      <button class="mobile-nav-btn" data-section="journal" aria-label="Journal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Journal</span>
+      </button>
+      <button class="mobile-nav-btn" data-section="peaceful" aria-label="Peaceful Corner">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="9" x2="12" y2="2"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/></svg>
+        <span>Peace</span>
+      </button>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION: HOME                               -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="section-home" class="page-section active" role="tabpanel" aria-labelledby="Home">
+      <div class="section-inner home-section">
+        <div class="home-hero">
+          <h2 class="home-greeting">Hi, Manika 🤍</h2>
+          <p class="home-sub">Welcome back to your little world.</p>
+        </div>
+
+        <div class="reminder-card glass-card">
+          <p id="reminder-text" class="reminder-text"></p>
+          <button id="new-reminder-btn" class="gentle-btn">Give me another gentle reminder 🌷</button>
+        </div>
+
+        <div class="shortcut-cards">
+          <button class="shortcut-card glass-card" data-goto="breathe">
+            <span class="shortcut-icon" aria-hidden="true">🌬️</span>
+            <span class="shortcut-label">I need a little calm</span>
+          </button>
+          <button class="shortcut-card glass-card" data-goto="letters">
+            <span class="shortcut-icon" aria-hidden="true">💌</span>
+            <span class="shortcut-label">I need a little love</span>
+          </button>
+          <button class="shortcut-card glass-card" data-goto="peaceful">
+            <span class="shortcut-icon" aria-hidden="true">🌙</span>
+            <span class="shortcut-label">I need a moment for myself</span>
+          </button>
+        </div>
+
+        <footer class="home-footer">
+          <p>Made with love by your little brother. 🤍</p>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION: BREATHE                            -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="section-breathe" class="page-section" role="tabpanel" aria-labelledby="Breathe">
+      <div class="section-inner breathe-section">
+        <h2 class="section-heading">Breathe With Me 🌸</h2>
+        <p class="section-desc">There's nothing to achieve here. Just take a comfortable moment for yourself.</p>
+
+        <div class="breathe-container">
+          <div id="breathe-orb" class="breathe-orb" aria-live="polite" aria-label="Breathing animation">
+            <div class="breathe-orb-inner"></div>
+            <div class="breathe-orb-glow" aria-hidden="true"></div>
+            <p id="breathe-phase" class="breathe-phase">Ready when you are</p>
+          </div>
+        </div>
+
+        <div class="breathe-controls glass-card">
+          <div class="breathe-timer-row">
+            <label for="breathe-inhale" class="breathe-timer-label">
+              Inhale
+              <select id="breathe-inhale" class="breathe-select">
+                <option value="3">3s</option>
+                <option value="4" selected>4s</option>
+                <option value="5">5s</option>
+                <option value="6">6s</option>
+              </select>
+            </label>
+            <label for="breathe-exhale" class="breathe-timer-label">
+              Exhale
+              <select id="breathe-exhale" class="breathe-select">
+                <option value="4">4s</option>
+                <option value="5">5s</option>
+                <option value="6" selected>6s</option>
+                <option value="7">7s</option>
+                <option value="8">8s</option>
+              </select>
+            </label>
+            <label for="breathe-duration" class="breathe-timer-label">
+              Duration
+              <select id="breathe-duration" class="breathe-select">
+                <option value="60">1 min</option>
+                <option value="120" selected>2 min</option>
+                <option value="300">5 min</option>
+                <option value="0">∞</option>
+              </select>
+            </label>
+          </div>
+          <div class="breathe-btn-row">
+            <button id="breathe-start" class="gentle-btn breathe-btn">Start</button>
+            <button id="breathe-pause" class="gentle-btn breathe-btn" disabled>Pause</button>
+            <button id="breathe-stop" class="gentle-btn breathe-btn" disabled>Stop</button>
+          </div>
+          <p class="breathe-elapsed" id="breathe-elapsed"></p>
+        </div>
+
+        <p class="breathe-alt-note">Prefer not to follow a breathing rhythm? Just enjoy the peaceful animation. 🌷</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION: LITTLE LETTERS                     -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="section-letters" class="page-section" role="tabpanel" aria-labelledby="Little Letters">
+      <div class="section-inner letters-section">
+        <h2 class="section-heading">Little Letters 💌</h2>
+        <p class="section-desc">Open when you need a little love.</p>
+
+        <div class="envelopes-grid" id="envelopes-grid">
+          <!-- Envelopes rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Letter Modal -->
+      <div id="letter-modal" class="letter-modal hidden" role="dialog" aria-modal="true" aria-label="Letter content">
+        <div class="letter-modal-overlay"></div>
+        <div class="letter-modal-content glass-card">
+          <button id="letter-close" class="letter-close-btn" aria-label="Close letter">✕</button>
+          <div id="letter-body" class="letter-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION: JOURNAL                            -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="section-journal" class="page-section" role="tabpanel" aria-labelledby="Journal">
+      <div class="section-inner journal-section">
+        <h2 class="section-heading journal-heading">A Little Place to Let Go 📝</h2>
+        <p class="section-desc">Your thoughts, your pace. No one is reading over your shoulder.</p>
+
+        <!-- Privacy notice -->
+        <div id="journal-privacy" class="journal-privacy glass-card">
+          <p><strong>A note about privacy:</strong> Your entries are stored in this browser on this device. They are not uploaded to a server by this website. Anyone with access to this browser profile may be able to view them, and localStorage is not encrypted or password-protected. Avoid saving highly sensitive information on a shared device.</p>
+          <button id="journal-privacy-dismiss" class="gentle-btn small-btn">I understand 🤍</button>
+        </div>
+
+        <div class="journal-editor glass-card">
+          <input type="text" id="journal-title" class="journal-title-input" placeholder="A little title (optional)" maxlength="120" aria-label="Entry title" />
+          <textarea id="journal-body" class="journal-body-input" placeholder="You can write a little, write a lot, or leave this page empty. There's no right way to use this space." aria-label="Entry content" rows="8"></textarea>
+          <div class="journal-editor-footer">
+            <span id="journal-char-count" class="journal-char-count">0 characters</span>
+            <div class="journal-editor-btns">
+              <button id="journal-new" class="gentle-btn small-btn">New Entry</button>
+              <button id="journal-save" class="gentle-btn small-btn primary-btn">Save 🤍</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="journal-save-msg" class="journal-save-msg hidden" aria-live="polite">Saved in this browser. 🤍</div>
+
+        <div class="journal-entries-section">
+          <h3 class="journal-entries-heading">Your entries</h3>
+          <div id="journal-entries-list" class="journal-entries-list">
+            <p class="journal-empty-state">No entries yet. Take your time. 🌷</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION: PEACEFUL CORNER                    -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section id="section-peaceful" class="page-section" role="tabpanel" aria-labelledby="Peaceful Corner">
+      <div class="section-inner peaceful-section">
+        <h2 class="section-heading">Your Peaceful Corner 🌙</h2>
+        <p class="section-desc">A little escape. Stay as long as you like — there's no rush.</p>
+
+        <!-- Theme selector -->
+        <div class="peaceful-themes">
+          <button class="theme-btn active" data-theme="sakura" aria-pressed="true">
+            <span class="theme-preview sakura-preview"></span>
+            <span>Sakura Garden</span>
+          </button>
+          <button class="theme-btn" data-theme="rain" aria-pressed="false">
+            <span class="theme-preview rain-preview"></span>
+            <span>Rainy Window</span>
+          </button>
+          <button class="theme-btn" data-theme="lavender" aria-pressed="false">
+            <span class="theme-preview lavender-preview"></span>
+            <span>Lavender Evening</span>
+          </button>
+          <button class="theme-btn" data-theme="sunrise" aria-pressed="false">
+            <span class="theme-preview sunrise-preview"></span>
+            <span>Warm Cream Sunrise</span>
+          </button>
+          <button class="theme-btn" data-theme="moonlight" aria-pressed="false">
+            <span class="theme-preview moonlight-preview"></span>
+            <span>Quiet Moonlight</span>
+          </button>
+        </div>
+
+        <!-- Atmosphere display -->
+        <div id="peaceful-atmosphere" class="peaceful-atmosphere theme-sakura" aria-label="Peaceful atmosphere display">
+          <div class="atmosphere-effects" id="atmosphere-effects" aria-hidden="true"></div>
+          <p class="atmosphere-text">Your little corner is ready. 🤍</p>
+        </div>
+
+        <!-- Audio controls -->
+        <div class="peaceful-audio glass-card">
+          <h3 class="audio-heading">Ambient Sounds</h3>
+          <div class="audio-btns">
+            <button class="audio-select-btn" data-sound="rain" aria-pressed="false">🌧️ Gentle Rain</button>
+            <button class="audio-select-btn" data-sound="forest" aria-pressed="false">🌿 Soft Forest</button>
+            <button class="audio-select-btn" data-sound="water" aria-pressed="false">💧 Flowing Water</button>
+          </div>
+          <div class="audio-controls">
+            <button id="audio-play" class="gentle-btn small-btn" disabled>Play</button>
+            <button id="audio-mute" class="gentle-btn small-btn" disabled>Mute</button>
+            <label class="audio-volume-label" for="audio-volume">
+              Volume
+              <input type="range" id="audio-volume" min="0" max="100" value="50" class="settings-range" disabled />
+            </label>
+          </div>
+          <p id="audio-status" class="audio-status">Select a sound to begin.</p>
+          <p id="audio-missing-msg" class="audio-missing-msg hidden">
+            Audio files are not available yet. To add ambient sounds, place audio files in the <code>assets/audio/</code> folder. See the README for details. The visual experience works perfectly without audio. 🌷
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /main-app -->
+
+  <!-- Confirmation dialog (reusable) -->
+  <div id="confirm-dialog" class="confirm-dialog hidden" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="confirm-overlay"></div>
+    <div class="confirm-box glass-card">
+      <p id="confirm-title" class="confirm-title"></p>
+      <p id="confirm-desc" class="confirm-desc"></p>
+      <div class="confirm-btns">
+        <button id="confirm-cancel" class="gentle-btn small-btn">Cancel</button>
+        <button id="confirm-ok" class="gentle-btn small-btn danger-btn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
